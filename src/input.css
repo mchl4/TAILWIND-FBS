@@ -1,0 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.container {
+    @apply max-w-[90rem] w-full mx-auto md:max-w-[70rem];
+}
+
+@layer components {
+    .header__wrapper {
+        @apply py-4 px-[1rem] flex items-center bg-center justify-between md:py-1;
+    }
+
+    nav{
+        @apply absolute w-full h-full bg-light top-[75px] left-[-100%] z-10 border-t-[1px] border-gray-200 transition-all duration-[0.5s] md:static md:border-none;
+    }
+
+    .nav.open{
+        @apply w-full left-[0%];
+    }
+
+    .nav-links{
+        @apply flex uppercase flex-col text-center md:flex-row md:justify-end md:text-[14px];
+    }
+
+    .nav-links ul li{
+        @apply border-b-[1px] border-gray-300;
+    }
+
+    .nav-links li{
+        @apply border-y md:border-none md:relative;
+    }
+
+    .nav-links li::after{
+        @apply md:bottom-0 md:content-[''] md:block md:h-[5px] md:left-[50%] md:absolute md:bg-[#6a103f] md:w-0 md:scale-x-0 md:hover:scale-x-100 md:transition md:duration-700;
+    }
+
+    .nav-links li:hover::after{
+        @apply w-full left-0;
+    }
+
+    .nav-links li a{
+        @apply relative inline-block h-[60px] leading-[60px] w-full text-maroonDark hover:bg-maroonDark hover:text-light transition-all duration-300 md:hover:bg-transparent md:hover:text-maroonDark md:px-5;
+    }
+
+    /* SUB MENU */
+    .dropdown-parent{
+        @apply md:relative;
+    }
+
+    .dropdown-parent:hover .nav-links-dropdown{
+        @apply !block z-[9999];
+    }
+
+    .nav-links-dropdown{
+        @apply hidden relative p-5 left-0 border-t-[1px] bg-[#480f2d] md:bg-light md:absolute md:leading-[30px] md:z-[9999];
+    }
+
+    .nav-links-dropdown li{
+        @apply border-none hover:bg-[#6a103f] md:hover:bg-transparent md:w-[300px];
+    }
+
+    .nav-links-dropdown li::after{
+        @apply md:h-[2px] md:bottom-2;
+    }
+
+    .nav-links-dropdown li a{
+        @apply h-auto leading-[1.6] text-light !p-0 md:text-left md:text-maroonDark;
+    }
+
+    .nav-links-dropdown.active{
+        @apply block;
+    }
+
+    a.active{
+        @apply bg-maroonDark text-light;
+    }
+
+    .burger__menu span{
+        @apply block absolute h-[8px] w-full bg-maroonDark rounded-md opacity-100 left-0;
+    }
+
+    .burger__menu span:nth-child(1){
+        @apply opacity-100 top-0 transition-all duration-300;
+    }
+
+    .burger__menu span:nth-child(2){
+        @apply top-[15px] transition-all duration-300;
+    }
+
+    .burger__menu span:nth-child(3){
+        @apply top-[15px] transition-all duration-300;
+    }
+
+    .burger__menu span:nth-child(4){
+        @apply opacity-100 top-[30px] transition-all duration-300;
+    }
+
+    .burger__menu.open span:nth-child(1){
+        @apply top-[15px] w-0 left-[50%] opacity-0 transition-all duration-300;
+    }
+
+    .burger__menu.open span:nth-child(2){
+        @apply rotate-[45deg] transition-all duration-300;
+    }
+
+    .burger__menu.open span:nth-child(3){
+        @apply rotate-[-45deg] transition-all duration-300;
+    }
+
+    .burger__menu.open span:nth-child(4){
+        @apply top-[15px] w-0 left-[50%] opacity-0 transition-all duration-300;
+    }
+
+}
+
+/* BANNER */
+  .banner {
+    @apply bg-malabo md:bg-BGbanner md:bg-[length:400%_400%] animate-mGradient md:animate-gradient;
+}
+
+/* POSITION NG BACKGROUND */
+@media (min-width: 64rem) {
+    @keyframes gradient {
+        0% {
+            background-position: 25% 0%;
+        }
+
+        100% {
+            background-position: 40% 80%;
+        }
+    }
+}
+
+.banner__wrapper{
+    @apply md:grid md:grid-cols-[4fr_3fr] md:h-[600px] md:items-center md:gap-[3rem]
+}
+
+.banner__content{
+    @apply px-[2rem] pt-[4rem]
+}
+.banner__title h2{
+    @apply font-body text-3xl;
+}
+.banner__content p{
+    @apply text-sm
+}
+.banner__title span{
+    @apply font-bold
+}
+.banner__img img{
+    @apply w-[100%]
+}
+
+/* WHO WE ARE?  */
+.who__wrapper{
+    @apply py-[6rem] px-[2rem]
+}
+.who__content{
+    @apply text-center;
+}
+.who__text h2{
+    @apply font-body font-bold text-dark text-4xl;
+}
+.who__text h3{
+    @apply font-body font-light text-dark text-4xl;
+}
+
+/* WHAT WE OFFER */
+.offer{
+    @apply text-light py-[6rem] bg-cover bg-center md:h-[750px];
+}
+.offer__wrapper h2{
+    @apply  font-body text-4xl text-center;
+}
+.offer__wrapper span{
+    @apply font-body font-bold
+}
+.offer__content{
+    @apply md:flex md:flex-row
+}
+.offer__item{
+    @apply text-center px-[2rem];
+}
+.item__title{
+    @apply py-[4rem]
+}
+.offer__item .item__title i{
+    @apply text-6xl mb-[1rem]
+}
+.offer__item ul{
+    @apply font-body text-justify
+}
+
+/* HEAR WHAT OUR CLIENTS SAY */
+.client{
+    @apply bg-malabo pt-[6rem] pb-[10rem] px-[2rem] 
+}
+.client__wrapper h2{
+    @apply font-body text-3xl text-center pt-[2rem] pb-[3rem];
+}
+.client__wrapper span{
+    @apply font-body font-bold;
+}
+.client__wrapper p{
+    @apply font-body font-bold
+}
+.client__profile{
+    @apply flex flex-col items-center text-center font-body md:w-[75%];
+}
+.client__item{
+    @apply md:grid md:grid-cols-[2fr_2fr] md:justify-items-center
+}
+.client__item p{
+    @apply md:leading-9 md:mt-[4rem]  
+}
+.client__item .client__profile img{
+    @apply border border-none rounded-full p-[2rem]
+}
+.client__text i{
+    @apply text-[10rem] text-dark/20
+}
+.clients_slides{
+    @apply relative;
+}
+
+/* EVENTS AND ACTIVITIES */
+.events{
+    @apply font-body py-[3rem] px-[2rem]
+}
+.events__wrapper{
+    @apply flex flex-col items-center
+}
+.events__wrapper h2{
+    @apply font-body font-bold text-3xl text-center my-[5rem]
+}
+.events__wrapper span{
+    @apply font-body font-normal
+}
+.events__cards{
+    @apply flex flex-col items-center gap-[3rem] md:flex md:flex-row
+}
+.events__card{
+    @apply overflow-clip border shadow-md text-center transition-all
+}
+.events__card img{
+    @apply w-full hover:scale-[1.1] transition-all
+}
+.card__content{
+    @apply p-[2rem]
+}
+.card__content h3{
+    @apply text-2xl 
+}
+.card__content p{
+    @apply my-[2rem]
+}
+
+/* ABOUT US */
+ .Aboutbanner{
+     @apply bg-malabo md:bg-BGbanner md:bg-[length:400%_400%] animate-mGradient md:animate-gradient;
+ }
+
+ /* POSITION NG BACKGROUND */
+ @media (min-width: 64rem) {
+     @keyframes gradient {
+         0% {
+             background-position: 25% 0%;
+         }
+
+         100% {
+             background-position: 40% 80%;
+         }
+     }
+ }
+.Aboutbanner__title{
+    @apply font-body
+}
+.Aboutbanner__title h2{
+    @apply text-3xl
+}
+.Aboutbanner__title span{
+    @apply font-normal
+}
+
+
+.Aboutbanner__wrapper {
+    @apply md:grid md:grid-cols-[4fr_3fr] md:h-[600px] md:items-center md:gap-[3rem]
+}
+
+.Aboutbanner__content {
+    @apply px-[2rem] pt-[4rem]
+}
+
+.Aboutbanner__content p {
+    @apply text-sm
+}
+
+.Aboutbanner__img img {
+    @apply w-[100%]
+}
+
+/* PARTNER */
+.partner__wrapper{
+    @apply px-[2rem]
+}
+.partner__title{
+    @apply text-xl text-center font-body md:text-3xl 
+}
+.partner__title h2{
+    @apply font-bold
+}
+.partner__title span{
+    @apply font-normal
+}.partner__cards{
+    @apply py-[4rem] md:grid md:grid-cols-[1fr_1fr_1fr] md:gap-[4rem]
+}
+.partner__card{
+    @apply flex flex-col items-center font-body text-center my-[2rem] gap-2 md:text-left md:items-start
+}
+.partner__card h3{
+    @apply font-bold text-2xl
+}
+.partner__card p{
+    @apply text-sm
+}
+.partner__card img{
+    @apply h-[270px] 
+}
+.partner__desc{
+    @apply pt-[2rem]
+}
+.partner__desc h3{
+    @apply my-[1rem]
+}
+
+/* CLIENTS AND PARTNERS */
+.clients__wrapper{
+    @apply flex flex-col items-center gap-[5rem]
+}
+.client__text {
+    @apply relative;
+}
+ .client__text::before {
+     @apply content-quoteLeft w-[100px] top-0 left-0 absolute z-[-1];
+ }
+
+ .client__text::after {
+     @apply content-quoteRight w-[100px] bottom-0 right-0 absolute z-[-1] md:bottom-[-60px];
+ }
+.clients__logo{
+    @apply flex flex-col w-[17rem] gap-[5rem] items-center md:w-full md:h-auto md:grid md:grid-cols-3 md:justify-items-center
+}
+
+/* MEET OUR TEAM */
+.meet__desc span{
+    @apply font-body font-bold 
+}
+.meet__teamd{
+    @apply relative
+}
+.meet__teamd img{
+    @apply grayscale md:hover:grayscale-0
+}
+.johnny:hover .name{
+    @apply translate-y-[0] opacity-100 transition-all
+}
+.jeff:hover .name {
+    @apply translate-y-[0] opacity-100 transition-all
+}
+.rhoda:hover .name {
+    @apply translate-y-[0] opacity-100 transition-all
+}
+.bhea:hover .name {
+    @apply translate-y-[0] opacity-100 transition-all
+}
+.patrick:hover .name {
+    @apply translate-y-[0] opacity-100 transition-all
+}
+.ralph:hover .name {
+    @apply translate-y-[0] opacity-100 transition-all
+}
+.michael:hover .name {
+    @apply translate-y-[0] opacity-100 transition-all
+}
+.name{
+    @apply font-body translate-y-[70px] opacity-0 transition-all
+}
+
+
+
+/* FOOTER */
+.footer{
+    @apply pb-[6rem] md:pb-[3rem]
+}
+.footer__wrapper{
+    @apply flex flex-col gap-[3rem] items-center text-center font-body md:grid md:grid-cols-[1fr_1fr_1fr] md:items-start md:py-[2rem]
+}
+.footer__branding{
+    @apply flex flex-col gap-2 md:items-center
+}
+.footer__branding img{
+    @apply w-full md:w-[65%]
+}
+.footer__social{
+    @apply flex gap-[2rem] justify-center mt-[1rem] md:gap-[1rem]
+}
+.footer__social li{
+    @apply text-maroonDark text-xl bg-light py-1 px-2 rounded-sm
+}
+
+/* SLIDER */
+
+
+ .client__wrapper .tns-outer {
+     @apply relative;
+ }
+
+ .client__wrapper .tns-nav {
+     @apply z-[999] absolute bottom-[-5rem] left-[50%] -translate-x-1/2 -translate-y-1/2 md:bottom-[-2rem];
+ }
+
+ .client__wrapper .tns-nav button {
+     @apply mx-[0.2rem] w-[15px] h-[15px] rounded-full border-none bg-maroonDark;
+ }
+
+ .client__wrapper button.tns-nav-active {
+     @apply bg-[#be2a76];
+ }
+ 
+   
+@keyframes animate{
+    0%{
+        background-position-x: 0;
+    }
+    100%{
+        background-position-x: 100px;
+    }
+}
+
+@layer utilities {
+    .btn {
+        @apply inline-block py-[.8rem] px-[1rem] border-transparent border-[.1rem] text-sm font-body font-medium;
+    }
+
+    .btn.bg--maroon {
+        @apply  bg-maroonDark text-light font-semibold font-body rounded-full text-center transition-all hover:transition-all hover:scale-[1.1] hover:bg-transparent hover:border-maroonDark hover:border-[.1rem] hover:text-maroonDark ;
+    }
+
+    .btn.bg--maroon-transparent {
+        @apply bg-transparent border-maroonDark border-[.1rem] text-maroonDark font-body rounded-full  text-center hover:bg-malabo hover:border-maroonDark ;
+    }
+        .btn.bg--light-transparent {
+            @apply bg-transparent border-light border-[.1rem] py-[1.2rem] text-light  font-body rounded-full text-center hover:transition-all hover:text-maroonDark hover:bg-light hover:border-transparent hover:scale-[1.1];
+        }
+}
